@@ -7,24 +7,24 @@ PluginBase createPlugin() => _ValidatorLint();
 class _ValidatorLint extends PluginBase {
   @override
   List<LintRule> getLintRules(CustomLintConfigs configs) => [
-    ValidatorMissingRule(),
-  ];
+        ValidatorMissingRule(),
+      ];
 }
 
 class ValidatorMissingRule extends DartLintRule {
   ValidatorMissingRule()
-    : super(
-        code: LintCode(
-          name: 'validator_missing',
-          problemMessage: 'Validator is missing',
-          correctionMessage: 'Add a validator to the field',
-        ),
-      );
+      : super(
+          code: LintCode(
+            name: 'validator_missing',
+            problemMessage: 'Validator is missing',
+            correctionMessage: 'Add a validator to the field',
+          ),
+        );
 
   @override
   void run(
     CustomLintResolver resolver,
-    ErrorReporter reporter,
+    DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
     context.registry.addInstanceCreationExpression((node) {
